@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>A/L ICT Learning Portal</title>
+
+<style>
+body {
+  font-family: Arial;
+  margin:0;
+  background:#eef2f5;
+}
+
+/* Header */
+header {
+  background:#1f2d3d;
+  color:white;
+  padding:20px;
+  text-align:center;
+}
+
+header h1 {
+  margin:0;
+  font-size:32px;
+}
+
+header p {
+  font-size:16px;
+}
+
+/* Slideshow */
+.slideshow {
+  width:100%;
+  height:250px;
+  overflow:hidden;
+  position:relative;
+}
+
+.slideshow img {
+  width:100%;
+  height:250px;
+  object-fit:cover;
+  border-bottom:4px solid #3498db;
+}
+
+/* Container for main + sidebar */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  width:90%;
+  margin:20px auto;
+  gap:20px;
+}
+
+/* Main content */
+.main {
+  flex:3;
+  background:white;
+  padding:20px;
+  border-radius:8px;
+  box-shadow:0 0 8px rgba(0,0,0,0.1);
+}
+
+/* Sidebar */
+.sidebar {
+  flex:1;
+  background:white;
+  padding:20px;
+  border-radius:8px;
+  box-shadow:0 0 8px rgba(0,0,0,0.1);
+  max-width:300px;
+}
+
+/* Buttons */
+button {
+  width:100%;
+  padding:12px;
+  margin:8px 0;
+  font-size:16px;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+  color:white;
+}
+
+.papers{background:#3498db;}
+.quiz{background:#f39c12;}
+.login{background:#2ecc71;}
+.register{background:#9b59b6;}
+.contact{background:#e74c3c;}
+
+button:hover{
+  opacity:0.9;
+}
+
+/* Sidebar video */
+.sidebar iframe {
+  width:100%;
+  height:200px;
+  border-radius:6px;
+  box-shadow:0 2px 6px rgba(0,0,0,0.2);
+}
+
+.sidebar h3 {
+  font-size:18px;
+  margin-bottom:10px;
+}
+
+.sidebar a button {
+  width:100%;
+  background:#FF0000;
+  margin-top:10px;
+}
+
+/* Responsive */
+@media screen and (max-width:768px){
+  .container{
+    flex-direction:column;
+  }
+  .sidebar{
+    max-width:100%;
+  }
+}
+</style>
+
+<script>
+let images = [
+  "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
+  "https://images.unsplash.com/photo-1522202176988-66273c2fd55f",
+  "https://images.unsplash.com/photo-1509062522246-3755977927d7"
+];
+
+let i = 0;
+function slideShow(){
+  document.getElementById("slide").src = images[i];
+  i++;
+  if(i >= images.length){ i=0; }
+  setTimeout(slideShow,3000);
+}
+</script>
+
+</head>
+<body onload="slideShow()">
+
+<header>
+<h1>A/L ICT Learning Portal</h1>
+<p>Technology • Knowledge • Future Skills</p>
+</header>
+
+<!-- Slideshow -->
+<div class="slideshow">
+  <img id="slide" src="">
+</div>
+
+<div class="container">
+  <!-- Main Content -->
+  <div class="main">
+    <h2>Welcome</h2>
+    <p>Prepare for your A/L ICT exams with past papers, online quizzes, tutorials, and more. Develop your digital skills and track your improvement efficiently.</p>
+
+    <a href="pastpapers.html"><button class="papers">📄 Past Papers</button></a>
+    <a href="quiz.html"><button class="quiz">🧠 Online Quiz</button></a>
+    <a href="login.html"><button class="login">🔑 Login</button></a>
+    <a href="register.html"><button class="register">📝 Register</button></a>
+    <a href="contact.html"><button class="contact">📞 Contact</button></a>
+  </div>
+
+  
+
+    <!-- Embedded Video -->
+    <!-- YouTube Sidebar -->
+<div class="sidebar">
+<h3>ICT Video Tutorials</h3>
+
+
+
+<!-- Link to YouTube Channel -->
+<a href="https://www.youtube.com/@JudeKathurusingha/videos" target="_blank">
+<button>▶ View All Videos</button>
+</a>
+
+</div>
+
+
+
+    <!-- Link to YouTube Channel -->
+    <a href="https://www.youtube.com/@JudeKathurusingha/videos" target="_blank">
+      <button>▶ View All Videos</button>
+    </a>
+  </div>
+</div>
+
+<footer style="background:#1f2d3d;color:white;padding:15px;text-align:center;margin-top:20px;">
+<p>© 2026 A/L ICT Learning Portal</p>
+</footer>
+
+</body>
+</html>
