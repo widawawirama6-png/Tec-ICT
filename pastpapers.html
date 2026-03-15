@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>A/L ICT Past Papers & Performance</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+body{
+  font-family:Arial;
+  background:#f4f6f8;
+  padding:20px;
+}
+
+h1{
+  text-align:center;
+}
+
+.paper{
+  background:white;
+  padding:15px;
+  margin:15px 0;
+  border-radius:8px;
+  box-shadow:0 0 8px rgba(0,0,0,0.1);
+}
+
+button{
+  padding:8px 15px;
+  margin:5px;
+  border:none;
+  border-radius:5px;
+  cursor:pointer;
+  font-size:14px;
+}
+
+.qbtn{background:#3498db;color:white;}
+.mbtn{background:#2ecc71;color:white;}
+.savebtn{background:#e67e22;color:white;}
+
+input{
+  padding:6px;
+  width:60px;
+  text-align:center;
+}
+
+#chartContainer{
+  max-width:600px;
+  margin:40px auto;
+}
+</style>
+
+<script>
+let years=[2025,2024,2023,2022,2021];
+
+function saveMark(year){
+  let mark=document.getElementById("mark"+year).value;
+  localStorage.setItem("ict"+year,mark);
+  alert("Mark saved!");
+  drawChart();
+}
+
+function loadMarks(){
+  years.forEach(function(y){
+    let m=localStorage.getItem("ict"+y);
+    if(m){
+      document.getElementById("mark"+y).value=m;
+    }
+  });
+  drawChart();
+}
+
+function drawChart(){
+  let marks=[];
+  years.forEach(function(y){
+    let m=localStorage.getItem("ict"+y);
+    marks.push(m?parseInt(m):0);
+  });
+
+  const ctx=document.getElementById("myChart").getContext("2d");
+  if(window.bar!=undefined) window.bar.destroy(); // remove previous chart
+
+  window.bar=new Chart(ctx,{
+    type:"bar",
+    data:{
+      labels:years,
+      datasets:[{
+        label:"Marks",
+        data:marks,
+        backgroundColor:"#3498db"
+      }]
+    },
+    options:{
+      scales:{
+        y:{
+          beginAtZero:true,
+          max:100
+        }
+      },
+      plugins:{
+        legend:{display:false},
+        title:{display:true,text:"A/L ICT Past Paper Performance"}
+      }
+    }
+  });
+}
+</script>
+
+</head>
+<body onload="loadMarks()">
+
+<h1>A/L ICT Past Papers</h1>
+<p>Click Question or Marking PDF to open the source website. Enter your marks to track performance.</p>
+
+<!-- Past Paper Items -->
+<div class="paper">
+<h3>A/L ICT — English — 2025</h3>
+<a href="https://ictkathurusingha.com/papers/" target="_blank">
+<button class="qbtn">⬇ Question PDF</button>
+</a>
+<a href="https://ictfromabc.com/public-dashboard/papers/al" target="_blank">
+<button class="mbtn">📋 Marking PDF</button>
+</a>
+<br><br>
+Your Mark: <input type="number" id="mark2025">
+<button class="savebtn" onclick="saveMark(2025)">Save</button>
+</div>
+
+<div class="paper">
+<h3>A/L ICT — English — 2024</h3>
+<a href="https://ictkathurusingha.com/papers/" target="_blank">
+<button class="qbtn">⬇ Question PDF</button>
+</a>
+<a href="https://ictfromabc.com/public-dashboard/papers/al" target="_blank">
+<button class="mbtn">📋 Marking PDF</button>
+</a>
+<br><br>
+Your Mark: <input type="number" id="mark2024">
+<button class="savebtn" onclick="saveMark(2024)">Save</button>
+</div>
+
+<div class="paper">
+<h3>A/L ICT — English — 2023</h3>
+<a href="https://ictkathurusingha.com/papers/" target="_blank">
+<button class="qbtn">⬇ Question PDF</button>
+</a>
+<a href="https://ictfromabc.com/public-dashboard/papers/al" target="_blank">
+<button class="mbtn">📋 Marking PDF</button>
+</a>
+<br><br>
+Your Mark: <input type="number" id="mark2023">
+<button class="savebtn" onclick="saveMark(2023)">Save</button>
+</div>
+
+<div class="paper">
+<h3>A/L ICT — English — 2022</h3>
+<a href="https://ictkathurusingha.com/papers/" target="_blank">
+<button class="qbtn">⬇ Question PDF</button>
+</a>
+<a href="https://ictfromabc.com/public-dashboard/papers/al" target="_blank">
+<button class="mbtn">📋 Marking PDF</button>
+</a>
+<br><br>
+Your Mark: <input type="number" id="mark2022">
+<button class="savebtn" onclick="saveMark(2022)">Save</button>
+</div>
+
+<div class="paper">
+<h3>A/L ICT — English — 2021</h3>
+<a href="https://ictkathurusingha.com/papers/" target="_blank">
+<button class="qbtn">⬇ Question PDF</button>
+</a>
+<a href="https://ictfromabc.com/public-dashboard/papers/al" target="_blank">
+<button class="mbtn">📋 Marking PDF</button>
+</a>
+<br><br>
+Your Mark: <input type="number" id="mark2021">
+<button class="savebtn" onclick="saveMark(2021)">Save</button>
+</div>
+
+<!-- Chart Container -->
+<div id="chartContainer">
+<canvas id="myChart"></canvas>
+</div>
+
+</body>
+</html>
